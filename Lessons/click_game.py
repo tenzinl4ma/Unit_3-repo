@@ -36,3 +36,4 @@ class ClickGame(MDApp):
         self.countt_value = int(self.count_label.text) + 1
         self.count_label.text = str(self.countt_value)
 
+ClickGame().run()

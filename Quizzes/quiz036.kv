@@ -1,0 +1,28 @@
+ScreenManager:
+    id: screen_manager
+    Whitemode:
+    Darkmode:
+
+<Whitemode>:
+    name: "whitemode"
+    MDLabel:
+        text: "Your Name"
+        font_size: "150px"
+        halign: "center"
+        theme_text_color: "Primary"
+    MDRaisedButton:
+        text: "Dark Mode"
+        on_press:
+            app.change_to_dark_mode()
+<Darkmode>:
+    name: "darkmode"
+    MDLabel:
+        text: "Your Name"
+        font_size: "150px"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 1, 1, 1, 1  
+    MDRaisedButton:
+        text: "Light Mode"
+        on_press:
+            app.change_to_light_mode()

@@ -1,0 +1,30 @@
+ScreenManager:
+    id: screen_manager
+    MysteryPageA:
+    MysteryPageB:
+
+<MysteryPageA>:
+    name: 'mysteryA'
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 10
+        MDLabel:
+            text: "This is mystery page A"
+            halign: 'center'
+        MDRaisedButton:
+            text: "Go to Page B"
+            on_press: root.manager.current = 'mysteryB'
+
+<MysteryPageB>:
+    name: 'mysteryB'
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 10
+        MDLabel:
+            text: "This is mystery page B"
+            halign: 'center'
+        MDRaisedButton:
+            text: "Go to Page A"
+            on_press: root.manager.current = 'mysteryA'
