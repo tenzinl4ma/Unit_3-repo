@@ -1,0 +1,9 @@
+<MyWidget>:
+    orientation: 'vertical'
+    Button:
+        id: my_button
+        text: "Press Me"
+        size_hint: None, None
+        size: 200, 100
+        background_color: 0, 1, 0, 1  
+        on_press: root.toggle_color(self) 

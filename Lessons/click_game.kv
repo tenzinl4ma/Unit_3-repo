@@ -1,0 +1,20 @@
+Screen:
+    size: 500,500
+    MDLabel:
+        id: countt_label
+        text: "0"
+        halign: "center"
+        font_size: "34pt"
+        color: "#00FF00"  # Text color set to green
+        size_hint: .4, 0.3
+        pos_hint: {"center_x": 0.25, "center_y": 0.7}  # Adjusted position
+
+    MDRaisedButton:
+        text: "Click me"
+        size_hint: 0.5, 0.1
+        font_size: "34pt"
+        md_bg_color: "#FF0000"  # Button color set to red
+        pos_hint: {"center_x": 0.75, "center_y": 0.3}  # Adjusted position
+        on_press: app.countt()
+
+

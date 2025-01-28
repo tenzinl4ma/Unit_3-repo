@@ -1,0 +1,82 @@
+ScreenManager:
+    id: scr_manager
+    IntroScreen:
+        name: "IntroScreen"
+    PrepareScreen:
+        name: "PrepareScreen"
+    BakeScreen:
+        name: "BakeScreen"
+
+
+<IntroScreen>:
+    MDCard:
+        size_hint: .7,.7
+        pos_hint: {'center_x':.5, 'center_y':.5}
+        md_bg_color: "#219ebc"
+        orientation: "vertical"
+
+        MDLabel:
+            text: "Pizza Tutorial"
+            font_style: "H5"
+            halign: 'center'
+            color: '#FFFFFF'
+
+        FitImage:
+            size_hint: 1, .7
+            source: "pizza.jpg"
+
+        MDRaisedButton:
+            text: "Next Step"
+            pos_hint: {"center_x": .8}
+            md_bg_color: "e63946"
+            on_press: root.next() 
+
+
+<PrepareScreen>:
+    MDCard:
+        size_hint: .7,.7
+        pos_hint: {'center_x':.5, 'center_y':.5}
+        md_bg_color: "#219ebc"
+        orientation: "vertical"
+
+        MDLabel:
+            text: "Pizza Tutorial"
+            font_style: "H5"
+            halign: 'center'
+            color: '#FFFFFF'
+
+        MDBoxLayout:
+            size_hint: 1, .7
+            orientation: "vertical"
+            md_bg_color: "#FFFFFF"
+            MDLabel:
+                text: "List of ingredient"
+                font_style: "H2"
+            MDLabel:
+                text: "salt 20gram"
+                font_style: "H4"
+
+            MDCheckbox:
+                id: flour
+                size_hint: None, None
+                size: "48dp", "40dp"
+                pos_hint: {"center_x": .5}
+                on_press: root.add_flour()
+            MDLabel:
+                text: "List of the INgreditns"
+
+        
+        MDBoxLayout:
+            MDRaisedButton:
+                text: "Next Step"
+                pos_hint: {"center_x": .8}
+                md_bg_color: "e63946"
+                on_press: root.back() 
+            MDRaisedButton:
+                text: "Next Step"
+                pos_hint: {"center_x": .8}
+                md_bg_color: "e63946"
+                on_press: root.next()
+
+
+<BakeScreen>:

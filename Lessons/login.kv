@@ -1,0 +1,122 @@
+ScreenManager:
+    id: scr_manager
+    LoginScreen:
+        name: "Login"
+    RegisterScreen:
+        name: "register"
+
+<LoginScreen>:
+    MDCard:
+        size_hint: None, None
+        size: 600, 900
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        elevation: 10
+        padding: 25
+        spacing: 25
+        orientation: "vertical"
+        
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 30
+            padding: [0, 50, 0, 0]  # Adjust as needed for spacing
+
+            MDLabel:
+                id: login_label
+                text: "Login"
+                font_size: 50
+                halign: "center"
+                size_hint_y: None
+                height: self.texture_size[1] 
+                padding_y: 20
+
+            MDTextField:
+                hint_text: "Enter your email"
+                icon_left: "email"
+                font_size: 20
+                size_hint_x: 0.8
+                pos_hint: {"center_x": 0.5}            
+
+            MDTextField:
+                hint_text: "Enter your password"
+                icon_left: "lock"
+                password: True
+                font_size: 20
+                size_hint_x: 0.8
+                pos_hint: {"center_x": 0.5}
+                on_text: app.limit_password_input(self)
+
+            GridLayout:
+                rows: 1
+                cols: 2
+                spacing: 20
+                padding: [90, 100, 50, 100]
+
+                MDFillRoundFlatIconButton:
+                    text: "Login"
+                    icon: "login"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.accountcreated()  
+
+                MDFillRoundFlatIconButton:
+                    text: "Sign Up"
+                    icon: "account-plus"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.acc_register() 
+
+<RegisterScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 20
+        padding: 20
+        
+        MDCard:
+            size_hint: None, None
+            size: dp(300), dp(500)
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            elevation: 10
+            padding: 20
+            spacing: 20
+            orientation: "vertical"
+
+            MDLabel:
+                text: "Sign Up"
+                halign: "center"
+                font_style: "H4"
+
+            MDTextField:
+                id: name_field
+                hint_text: "Full Name"
+                icon_left: "account"
+                size_hint_x: 0.9
+                pos_hint: {"center_x": 0.5}
+                font_size: 18
+
+            MDTextField:
+                id: email_field
+                hint_text: "Email"
+                icon_left: "email"
+                size_hint_x: 0.9
+                pos_hint: {"center_x": 0.5}
+                font_size: 18
+
+            MDTextField:
+                id: password_field
+                hint_text: "Password"
+                icon_left: "lock"
+                password: True
+                size_hint_x: 0.9
+                pos_hint: {"center_x": 0.5}
+                font_size: 18
+                on_text: app.limit_password_input(self)
+
+            MDFillRoundFlatButton:
+                id: registerbutton
+                text: "Create Account"
+                size_hint_x: 0.9
+                pos_hint: {"center_x": 0.5}
+                on_release: app.sign_up()  
+
+            MDTextButton:
+                text: "ALready have an account? Log In"
+                halign: "center"
+                on_release: app.root.current = "Login"  

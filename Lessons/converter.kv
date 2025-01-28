@@ -1,0 +1,47 @@
+Screen:
+    size: 500,500
+    md_bg_color: "#a3b18a"
+
+
+    MDBoxLayout:
+        id: main_box
+        orientation: "vertical"
+        size_hint: .8, 1
+        pos_hint: {"center_x":.5, "center_y":.5}
+
+
+        MDTextField:
+            id: user_input
+            hint_text: "Enter into the amount in yen"
+            mode: "rectangle"
+            size_hint: .8, .2
+            post_hint: {"center_x":.5}
+            background_color: 1,1,1,1
+            on_text:
+                app.yen_entered()
+
+            
+        MDFlatButton:
+            text: "-->USD"
+            text_color: "orange"
+            md_bg_color:"#FFFF00"
+            post_hint: {"center_x":.5}
+            on_press:
+                app.convert('usd')
+            
+
+
+        MDFlatButton:
+            text: "-->CAD"
+            text_color: "orange"
+            post_hint: {"center_x":.5}
+            on_press: 
+                app.convert('cad')
+
+        MDFlatButton:
+            text: "-->EUR"
+            text_color: "orange"
+            post_hint: {"center_x":.5}
+            on_press:
+                app.convert('eur')
+

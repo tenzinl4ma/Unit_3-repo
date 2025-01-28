@@ -1,0 +1,18 @@
+Screen:
+    size: 500,500
+    MDLabel:
+        id: my_label
+        text: "Hello world!"
+        halign: "center"
+        font_size: "34pt"
+    
+
+    MDRaisedButton:
+        text : "click me"
+        size_hint: 0.5,0.1
+        font_size: "34pt"
+        md_bg_color: "#f07167"
+        pos_hint: {"center_x": 0.5}
+        on_press:
+            app.change_label()
+

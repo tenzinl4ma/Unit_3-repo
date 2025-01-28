@@ -1,0 +1,49 @@
+BoxLayout:
+    orientation: 'vertical'
+    size: 500, 500
+    padding: 10
+    spacing: 20
+    md_bg_color: "#f5f5f5"  # Set background color of BoxLayout
+
+    MDLabel:
+        id: my_label
+        text: "Press a button to see the capital city"
+        halign: "center"
+        font_size: "20pt"
+        color: "#000000"  # Text color set to black
+        size_hint: 1, 0.3
+
+    MDFlatButton:
+        text: "Nepal"
+        size_hint: 0.4, 0.1
+        pos_hint: {"center_x": 0.5}
+        on_press: root.label_change('Nepal')
+        md_bg_color: "#FF5733"  # Button color set to a bright red
+
+    MDFlatButton:
+        text: "Japan"
+        size_hint: 0.4, 0.1
+        pos_hint: {"center_x": 0.5}
+        on_press: root.label_change('Japan')
+        md_bg_color: "#FF5733"  # Button color set to a bright red
+
+    MDFlatButton:
+        text: "USA"
+        size_hint: 0.4, 0.1
+        pos_hint: {"center_x": 0.5}
+        on_press: root.label_change('USA')
+        md_bg_color: "#FF5733"  # Button color set to a bright red
+
+    MDFlatButton:
+        text: "India"
+        size_hint: 0.4, 0.1
+        pos_hint: {"center_x": 0.5}
+        on_press: root.label_change('India')
+        md_bg_color: "#FF5733"  # Button color set to a bright red
+
+    MDFlatButton:
+        text: "China"
+        size_hint: 0.4, 0.1
+        pos_hint: {"center_x": 0.5}
+        on_press: root.label_change('China')
+        md_bg_color: "#FF5733"  # Button color set to a bright red

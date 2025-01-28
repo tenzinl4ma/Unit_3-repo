@@ -1,0 +1,13 @@
+Screen:
+    MDLabel:
+        id: counter_label
+        text: "0"  # Initial value
+        font_size: "48sp"  # Larger text size
+        halign: "center"  # Centered horizontally
+        pos_hint: {"center_x": 0.5, "center_y": 0.7}  # Positioned at the top
+
+    MDRaisedButton:
+        text: "Increase"
+        font_size: "18sp"  # Smaller text for the button
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}  # Button placed below the label
+        on_press: app.increase_count()  # Trigger the increase_count function
