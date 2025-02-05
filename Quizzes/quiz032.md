@@ -29,4 +29,6 @@ print(f" This is afeter setting\n {test1.get_email() and test1.greet()}")
 print(test1.get_email())
 
 ```
+### Proof of Work
+<img width="1276" alt="Screenshot 2025-02-05 at 11 03 29 AM" src="https://github.com/user-attachments/assets/6a7a559e-d862-44a0-ad74-240096d128e8" />
 
