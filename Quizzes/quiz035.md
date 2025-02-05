@@ -29,3 +29,5 @@ test2 = Student("Shrekkk", 100, "G11")
 
 print(f"Hello!{test2.get_name()} Even you are {test2.get_age()} years old. You are in {test2.get_grade()}")
 ```
+### Proof Of Work
+<img width="1130" alt="Screenshot 2025-02-05 at 11 09 10 AM" src="https://github.com/user-attachments/assets/0575bcf1-5819-468c-951b-14f696bdcfde" />
