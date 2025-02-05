@@ -25,4 +25,5 @@ class MyApp(MDApp):
 
 
 MyApp().run()
-'''
+```
+### Proof of work
