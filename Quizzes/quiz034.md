@@ -28,3 +28,5 @@ print(seat1)
 print(seat2)
 print(seat3)
 '''
+### Proof of Work
+<img width="651" alt="Screenshot 2025-02-05 at 11 06 24 AM" src="https://github.com/user-attachments/assets/9a1540bc-df65-491f-874e-d95589711059" />
