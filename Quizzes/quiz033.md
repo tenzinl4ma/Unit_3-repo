@@ -19,3 +19,5 @@ test2 = CompoundInterest(210.0, 20.0, 3)
 print(f"Compound Interest after {test2.years} years: {test2.calculate():.2f}")
 
 ```
+### Proof of Work
+<img width="1161" alt="Screenshot 2025-02-05 at 11 05 01 AM" src="https://github.com/user-attachments/assets/c6344e11-4651-4bbc-b786-c807bfd1e13f" />
