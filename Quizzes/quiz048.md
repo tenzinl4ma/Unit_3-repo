@@ -30,7 +30,7 @@ class Library:
             for book in self.books:
                 book.display_info()
 
-# Example Usage:
+
 book1 = Book("1984", "George Orwell", "978-0451524935")
 book2 = Book("To Kill a Mockingbird", "Harper Lee", "978-0061120084")
 
