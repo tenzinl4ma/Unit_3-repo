@@ -5,7 +5,7 @@
 
 ## Code
 
-```.py
+```sql
 SELECT 
     firstname, 
     lastname, 
