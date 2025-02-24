@@ -5,7 +5,7 @@
 
 ## Code
 
-```sql
+```.py
 SELECT 
     firstname, 
     lastname, 
@@ -28,3 +28,4 @@ FROM (
     GROUP BY transactions.account_id
 ) AS subquery
 ORDER BY fraudulent_account DESC;
+```
