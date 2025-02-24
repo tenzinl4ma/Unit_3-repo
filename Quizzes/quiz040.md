@@ -32,3 +32,7 @@ ORDER BY fraudulent_account DESC;
 ```
 # Evidence 
 <img width="1160" alt="Screenshot 2025-02-24 at 1 40 41 PM" src="https://github.com/user-attachments/assets/55434de4-1e55-4014-8d42-3fab58c7d872" />   #### Fraudguy are the reason for bankrupcy 
+
+ER Diagram
+
+<img width="978" alt="Screenshot 2025-02-24 at 1 55 59 PM" src="https://github.com/user-attachments/assets/fdb99180-eba4-431b-a3aa-b804af8518f5" />
