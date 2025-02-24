@@ -354,4 +354,6 @@ test.db_connection.close()
 
 https://github.com/user-attachments/assets/22407137-2b0a-4e65-9c89-88e4622195c3
 
+UML diagram and ER diagram
+![Uploading IMG_0061.jpg…]()
 
