@@ -1,4 +1,5 @@
 # Question
+<img width="1017" alt="Screenshot 2025-02-24 at 1 41 16 PM" src="https://github.com/user-attachments/assets/d3814499-1fd7-4d24-b629-91cc735165df" />
 
 
 
@@ -29,3 +30,5 @@ FROM (
 ) AS subquery
 ORDER BY fraudulent_account DESC;
 ```
+# Evidence 
+<img width="1160" alt="Screenshot 2025-02-24 at 1 40 41 PM" src="https://github.com/user-attachments/assets/55434de4-1e55-4014-8d42-3fab58c7d872" />   #### Fraudguy are the reason for bankrupcy 
