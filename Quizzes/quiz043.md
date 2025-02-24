@@ -30,4 +30,5 @@ print(test.get_pal_list())
 ## Evidence 
 <img width="1462" alt="Screenshot 2025-02-24 at 8 06 09 PM" src="https://github.com/user-attachments/assets/11a18d8d-b934-4f55-9d72-023e2422fd3a" />
 ## UML Diagram
+
 ![Screenshot 2025-02-24 at 8 08 05 PM](https://github.com/user-attachments/assets/9390f70e-bfbc-469c-b9f7-23af9a9d42f5)
