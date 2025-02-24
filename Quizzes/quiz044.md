@@ -26,4 +26,5 @@ print(test.pour(n=34))
 
 ### UML Diagram
 
-![Uploading IMG_0065.jpg…]()
+![IMG_0065](https://github.com/user-attachments/assets/ca4eefa4-e7c7-499f-af79-b2562eb619df)
+
