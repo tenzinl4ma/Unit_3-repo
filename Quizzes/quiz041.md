@@ -2,7 +2,7 @@
 <img width="1006" alt="Screenshot 2025-02-24 at 1 58 27 PM" src="https://github.com/user-attachments/assets/0b05e6ee-6ae4-45b2-a941-463b002d8a10" />
 
 
-# Code
+### Kivy Code
 
 ```.kv
 MDScreen:
@@ -235,14 +235,14 @@ MDScreen:
                 text: "----"
                 font_style: "Caption"
 ```
-### Kivy Code
+### Python Code
 
 ```.python
 
 from kivymd.app import MDApp
 from quiz_lib import DatabaseWorker, make_hash, check_text
 
-# HL: Check validity of database entries
+
 def check_frauds():
     output = []
     query = "select * from payments"
