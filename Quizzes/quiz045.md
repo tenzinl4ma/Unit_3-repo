@@ -32,6 +32,7 @@ word_counter.display_counts()
 ## Evidence
 
 <img width="1422" alt="Screenshot 2025-02-24 at 8 32 49 PM" src="https://github.com/user-attachments/assets/4c6c855f-6e8f-4cbc-af38-3811c
+  
   ## UML Diagram
 
  
