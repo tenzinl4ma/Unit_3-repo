@@ -7,14 +7,14 @@
 ```.py
 from quizlib import DatabaseManager, check_text
 
-# Corrected parameter name for DatabaseManager
+
 db = DatabaseManager(db_name='/Users/m22-007/Desktop/Unit3_Repo/Quizzes/bitcoin_exchange (1).db')
 
 
 query = "SELECT * FROM ledger"
 result = db.search(query=query, multiple=True)
 
-# Check transaction signatures
+
 for n in result:
     pre_hash = f"id {n[0]},sender_id {n[1]},receiver_id {n[2]},amount {n[3]}"
     
