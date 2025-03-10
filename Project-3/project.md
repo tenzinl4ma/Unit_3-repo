@@ -52,7 +52,6 @@ To help overcome these challenges of Mr.M Retro (restaurants), I propose a data-
 
 
 
-_Fig. 3_
 
 *Fig. 3* is ER diagram shows the tables in the database "project_3.db" and there relationships. 
 ## UML diagram
@@ -61,9 +60,9 @@ _Fig. 3_
 
 
 
-_Fig. 4_
 
-*Fig. 4* is UML diagram shows the classes and their methods used in developing this application. The lines and arrows illustrate the inheritance relationship. Most of the classes used in the application either inherit from MDScreen class or MDApp class. 
+
+*Fig. 4* is UML diagram shows the classes and their methods used in developing this application. The lines and arrows illustrate the inheritance relationship. Most of the classes used in the application either inherit from Screen class.
 
 
 
