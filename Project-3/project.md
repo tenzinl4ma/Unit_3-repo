@@ -176,6 +176,7 @@ To help overcome these challenges of Mr.M Retro (restaurants), I propose a data-
 13) TrainModel(Feeding Data) to LM
 14) Moderation
 15) Groq
+16) Downloadable image
 
 ## list of Package/ library used
 
@@ -187,6 +188,33 @@ To help overcome these challenges of Mr.M Retro (restaurants), I propose a data-
 6. hashlib
 7. dotenv
 8. security EmailAlert
+
+
+
+
+
+# Criteria D: Functionality
+
+## Video showcasing the functionality of the application
+
+
+
+
+# Citation
+
+1. https://lablab.ai/t/mastering-ai-content-creation-leveraging-llama-3-and-groq-api
+2. https://www.youtube.com/watch?v=YlRd4rw_vBw&t=40s
+3. https://www.youtube.com/watch?v=A3AXi9WjuQM
+4. https://www.youtube.com/results?search_query=python+simple+hasing
+5. https://www.youtube.com/results?search_query=emailalert+with+python
+6. https://www.youtube.com/watch?v=G-Rp41BzGxg&t=375s
+7. https://www.youtube.com/watch?v=vtpFfnb6pmY
+8. https://kivy.org/doc/stable/api-kivy.uix.screenmanager.html
+9. https://qiita.com/tapitapi/items/a4a4e3a7164afd922115
+10. https://www.youtube.com/watch?v=W5GmuOaUj3w
+11. https://www.youtube.com/results?search_query=sorting+with+python
+12. https://www.youtube.com/results?search_query=query+database
+13. https://www.youtube.com/watch?v=3vsC05rxZ8c
 
 
 
