@@ -157,3 +157,36 @@ To help overcome these challenges of Mr.M Retro (restaurants), I propose a data-
 | 6       | Funtionalities: Testing the all the dishes detail information                | 3/10 | After that press "X" button to close the dialog box of review. navigate to resturant tab by pressing which is below the screen near the users , press on one cusine and see the information, press "X" to close and then check on different Menu again.                                                     | Should display the details of the menus, like prices, tastes, l ocation, and cuision details.                                                              |
 
 
+# Criteria C: Development
+
+
+## List of techniques used
+1) Hashing password
+2) EmailAlert
+3) InputValidation
+4) ImageButton
+5) RenderingVideo
+6) Classes(Encapsulaiton adn decapsulation)
+7) KivyWidgets
+8) Queries Database
+9) Sorting
+10) Datafilter
+11) FileChooser
+12) API
+13) TrainModel(Feeding Data) to LM
+14) Moderation
+15) Groq
+
+## list of Package/ library used
+
+1. sqlite3
+2. kivymd
+3. os
+4. matplotlib.pyplot as plt
+5. datetime
+6. hashlib
+7. dotenv
+8. security EmailAlert
+
+
+
