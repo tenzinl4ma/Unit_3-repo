@@ -23,17 +23,17 @@ To help overcome these challenges of Mr.M Retro (restaurants), I propose a data-
 
 ## Success Criteria
 
-1. Users and food critics can provide reviews and ratings on each dish in the Mr.M restaurant.<be>
+1. Users and food critics can provide reviews and ratings on each dish in the Mr.M restaurant. <br>
  *Issue tackle: “his restaurant still relies on outdated methods, like collecting customer reviews and ratings through paper forms.”*
-2. Allow restaurants to advertise their special dishes and cuisine digitally on the Mr. Restro platform.
+2. Allow restaurants to advertise their special dishes and cuisine digitally on the Mr. Restro platform.<br>
    *Issue tackle: “ Advertising is done via posters and pamphlets, which are largely ignored in today’s digital age.”*
-3. The platform will allow producer to see the graph and trends over dishes and their dishes.
+3. The platform will allow producer to see the graph and trends over dishes and their dishes.<br>
 *Issued tackle: “ The supplies of ingredients to Mr.M retro also struggle to store and supplies the ingredients to restaurant as they don’t have proper data and information to supplies.”*
-4. The platform will have a chatbot that will assist users in navigating through the Mr.M restro.
+4. The platform will have a chatbot that will assist users in navigating through the Mr.M restro.<br>
  *Issued tackle:  “very difficult to navigate and get proper guidance on Mr.M Restro”*
-5. The user can see others reviews and get short insight into dishes before trying.
+5. The user can see others reviews and get short insight into dishes before trying.<br>
  *Issued tackle: "The customers also really struggle to get the right preference of their taste on dishes."*
-6. The platform must  show the prices, tastes and cuisine details of each dishes on menu.
+6. The platform must  show the prices, tastes and cuisine details of each dishes on menu.<br>
 *Issue tackle: “ The customers also really struggle to get the right preference of their taste on dishes and a manage budget for it”*
 
 
