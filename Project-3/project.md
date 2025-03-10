@@ -66,3 +66,35 @@ To help overcome these challenges of Mr.M Retro (restaurants), I propose a data-
 
 
 
+## Flow diagrams
+
+
+### Registration
+
+
+
+![Screenshot 2025-03-11 at 12 21 48 AM](https://github.com/user-attachments/assets/27c95cf3-8d13-43e5-b48f-2533876ea80e)
+
+
+
+
+
+
+*Fig. 1* is the flow diagram for the registration.
+
+###  Display the reviews
+
+![Screenshot 2025-03-11 at 12 23 36 AM](https://github.com/user-attachments/assets/932a38fd-1390-447b-8ac0-0857dcf69b3c)
+
+*Fig. 2* is the flow diagram for the displaying reviews
+
+
+###  Login
+
+![Screenshot 2025-03-11 at 12 25 20 AM](https://github.com/user-attachments/assets/bef13be3-002f-4e51-b199-12250cb4f2b1)
+
+
+
+*Fig. 2* is the flow diagram for login.
+
+
