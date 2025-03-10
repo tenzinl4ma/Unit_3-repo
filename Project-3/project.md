@@ -23,7 +23,7 @@ To help overcome these challenges of Mr.M Retro (restaurants), I propose a data-
 
 ## Success Criteria
 
-1. Users and food critics can provide reviews and ratings on each dish in the Mr.M restaurant.
+1. Users and food critics can provide reviews and ratings on each dish in the Mr.M restaurant.<be>
  *Issue tackle: “his restaurant still relies on outdated methods, like collecting customer reviews and ratings through paper forms.”*
 2. Allow restaurants to advertise their special dishes and cuisine digitally on the Mr. Restro platform.
    *Issue tackle: “ Advertising is done via posters and pamphlets, which are largely ignored in today’s digital age.”*
