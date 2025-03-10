@@ -44,3 +44,26 @@ To help overcome these challenges of Mr.M Retro (restaurants), I propose a data-
 
 ## System diagram
 <img width="1489" alt="Screenshot 2025-03-11 at 12 00 10 AM" src="https://github.com/user-attachments/assets/cb422a01-2c86-48f6-b798-c822a0a6e12d" />
+
+*Fig. 1* illustrates the system, its parts, inputs, and output. The relationships between them are shown as well. The application takes user input from the keyboard and mouse, the computer details and the software it's running are included in the diagram. The python environment is VS-Code, in which two coding languages, python and KivyMD are ran. They interact with the relational database "project.db" inside the Vs-Code environment. The output is displayed on a screen.
+
+## ER diagram
+![Screenshot 2025-03-11 at 0 06 04 AM](https://github.com/user-attachments/assets/4502c09e-32d4-42d8-9fd8-54bcf6a104a5)
+
+
+
+_Fig. 3_
+
+*Fig. 3* is ER diagram shows the tables in the database "project_3.db" and there relationships. 
+## UML diagram
+
+![Screenshot 2025-03-11 at 0 08 17 AM](https://github.com/user-attachments/assets/5aba717e-7ddf-43c0-8a59-26b9720d38b7)
+
+
+
+_Fig. 4_
+
+*Fig. 4* is UML diagram shows the classes and their methods used in developing this application. The lines and arrows illustrate the inheritance relationship. Most of the classes used in the application either inherit from MDScreen class or MDApp class. 
+
+
+
