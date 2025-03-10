@@ -1,7 +1,8 @@
 
 # Unit 3: Mr.Restro
 
-/Users/m22-007/Desktop/Unit3_Repo/Project-3/image/resturants.jpg
+<img width="531" alt="Screenshot 2025-03-10 at 11 58 36 PM" src="https://github.com/user-attachments/assets/2085c439-8e2d-4ec9-b4cf-a6d657ece063" />
+
 
 # Criteria A: Planning
 
@@ -23,21 +24,23 @@ To help overcome these challenges of Mr.M Retro (restaurants), I propose a data-
 ## Success Criteria
 
 1. Users and food critics can provide reviews and ratings on each dish in the Mr.M restaurant.
-### Issue tackle: “his restaurant still relies on outdated methods, like collecting customer reviews and ratings through paper forms.”
+ *Issue tackle: “his restaurant still relies on outdated methods, like collecting customer reviews and ratings through paper forms.”*
 2. Allow restaurants to advertise their special dishes and cuisine digitally on the Mr. Restro platform.
-### Issue tackle: “ Advertising is done via posters and pamphlets, which are largely ignored in today’s digital age.”
+   *Issue tackle: “ Advertising is done via posters and pamphlets, which are largely ignored in today’s digital age.”*
 3. The platform will allow producer to see the graph and trends over dishes and their dishes.
-### Issued tackle: “ The supplies of ingredients to Mr.M retro also struggle to store and supplies the ingredients to restaurant as they don’t have proper data and information to supplies.”
+*Issued tackle: “ The supplies of ingredients to Mr.M retro also struggle to store and supplies the ingredients to restaurant as they don’t have proper data and information to supplies.”*
 4. The platform will have a chatbot that will assist users in navigating through the Mr.M restro.
-### Issued tackle:  “very difficult to navigate and get proper guidance on Mr.M Restro”
+ *Issued tackle:  “very difficult to navigate and get proper guidance on Mr.M Restro”*
 5. The user can see others reviews and get short insight into dishes before trying.
-### Issued tackle: "The customers also really struggle to get the right preference of their taste on dishes."
+ *Issued tackle: "The customers also really struggle to get the right preference of their taste on dishes."*
 6. The platform must  show the prices, tastes and cuisine details of each dishes on menu.
-Issue tackle: “ The customers also really struggle to get the right preference of their taste on dishes and a manage budget for it”
+*Issue tackle: “ The customers also really struggle to get the right preference of their taste on dishes and a manage budget for it”*
 
 
 
 
 # Criteria B: Solution Overview
 
+
 ## System diagram
+<img width="1489" alt="Screenshot 2025-03-11 at 12 00 10 AM" src="https://github.com/user-attachments/assets/cb422a01-2c86-48f6-b798-c822a0a6e12d" />
