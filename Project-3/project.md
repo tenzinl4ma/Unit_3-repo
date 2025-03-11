@@ -164,7 +164,7 @@ To help overcome these challenges of Mr.M Retro (restaurants), I propose a data-
 1) Hashing password
 2) EmailAlert
 3) InputValidation
-4) ImageButton
+4) Try/Except/Finally
 5) RenderingVideo
 6) Classes(Encapsulaiton adn decapsulation)
 7) KivyWidgets
@@ -452,6 +452,196 @@ class ChatbotScreen(Screen):
 ```
 
 First it will get the api from the .env file for security because when I push it in github the api key is leaked. So, to prevent that we use inbuild library called dotenv which will graph and hide api key. res the code integrates the Groq AI with a Kivy-based chatbot interface by initializing the Groq client with an API key retrieved from an environment variable. When the ChatbotScreen is displayed, a greeting message is added to the chat interface. The user’s message is formatted with a "You:" prefix and sent to the interface, after which the input field is cleared. To ensure the UI remains responsive, the message query is processed asynchronously using Clock.schedule_once, which schedules the AI query to run in the next event loop iteration. The get_bot_response method constructs a message payload with the user input and a system message, which is then sent to Groq's chat.completions.create() method for a response. This non-blocking approach prevents UI freezing, enabling a smooth user experience while awaiting the AI's response.
+
+
+
+### Show Review/ Moderation/ Empty Validation ( success criteria: 5)
+```.py
+
+def show_reviews(self, food_name):
+        # Validate food_name
+        if not food_name or not isinstance(food_name, str):
+            print("ERROR: food_name must be a non-empty string!")
+            return
+
+        print(f"Fetching reviews for: {food_name}")  # Debugging print
+
+        # Connect to the database and fetch reviews
+        conn = None
+        try:
+            conn = sqlite3.connect('app.db')
+            cursor = conn.cursor()
+            
+            query = """
+                SELECT users.name, reviews.review_text
+                FROM reviews
+                JOIN users ON users.id = reviews.user_id
+                WHERE reviews.food_name = ?
+                AND reviews.review_text IS NOT NULL
+                AND TRIM(reviews.review_text) != ''
+            """
+
+            cursor.execute(query, (food_name,))
+            rows = cursor.fetchall()
+
+            # Create a vertical BoxLayout to hold the reviews
+            content_box = BoxLayout(orientation="vertical", padding=5, spacing=3, size_hint_y=None)
+            content_box.bind(minimum_height=content_box.setter('height'))  # Enable dynamic height adjustment
+
+            if rows:
+                for row in rows:
+                    username, review_text = row
+                    # Create an MDLabel with text wrapping enabled
+                    label = MDLabel(
+                        text=f"{username}: {review_text}",
+                        theme_text_color="Custom",
+                        text_color=(1, 1, 1, 1),  # White text
+                        size_hint_y=None,
+                        halign="left",  # Align text to the left
+                        markup=True,  # Enable markup for formatting
+                    )
+                    label.bind(texture_size=label.setter('size'))  # Dynamically adjust height based on content
+                    content_box.add_widget(label)
+            else:
+                # Add a fallback message if no reviews are found
+                content_box.add_widget(
+                    MDLabel(
+                        text="No reviews available for this food.",
+                        theme_text_color="Custom",
+                        text_color=(1, 1, 1, 1),  # White text
+                        size_hint_y=None,
+                        halign="center",  # Center-align the fallback message
+                    )
+                )
+
+            # Wrap the content_box in a ScrollView
+            scroll_view = ScrollView(size_hint=(1, None), size=(Window.width, Window.height * 0.2))  # Reduced height
+            scroll_view.add_widget(content_box)
+
+            # Show the dialog with reviews
+            self.review_dialog = MDDialog(
+                title=f"Reviews for {food_name}",
+                type="custom",
+                content_cls=scroll_view,  # Use the ScrollView as the content
+                md_bg_color=[0, 0, 0, 1],  # Black background
+                buttons=[
+                    MDFlatButton(
+                        text="CLOSE",
+                        theme_text_color="Custom",
+                        text_color=(1, 0, 0, 1),  # Red text
+                        on_release=self.close_review_dialog,  # Direct method reference
+                    ),
+                ],
+            )
+            self.review_dialog.open()
+
+        except Exception as e:
+            print(f"An error occurred while fetching reviews: {e}")
+        finally:
+            if conn:
+                conn.close()  # Ensure the connection is closed
+     
+
+```
+
+
+The show_reviews function follows a structured approach to retrieving and displaying user reviews efficiently within a Kivy-based application. It starts by validating the food_name parameter to ensure it is a non-empty string, preventing malformed queries. The function establishes an SQLite database connection and executes a parameterized SQL query using a cursor object, preventing SQL injection. The query joins the users and reviews tables, filtering out null and whitespace-only reviews. The retrieved data is iterated over, dynamically generating MDLabel widgets for each review, where text wrapping and height adjustments are controlled using the texture_size property binding.
+
+To handle multiple reviews, a BoxLayout with orientation="vertical" is used, ensuring a structured display. This layout is wrapped inside a ScrollView, allowing overflow content to be accessible while maintaining a limited height (size=(Window.width, Window.height * 0.2)). The function employs an MDDialog with a content_cls set to ScrollView, embedding the dynamically generated review list inside a material-style popup. A close button (MDFlatButton) is directly bound to self.close_review_dialog, ensuring efficient event handling. Finally, all database operations are enclosed within a try-finally block to guarantee connection closure, preventing resource leaks and maintaining optimal database performance.
+
+
+### Display the resturants and sort with details
+
+```.py
+
+    def sort_by_price(self):
+        global RESTAURANTS
+        RESTAURANTS.sort(key=lambda x: x['price'])
+        self.create_buttons()
+
+    def sort_by_rating(self):
+        global RESTAURANTS
+        RESTAURANTS.sort(key=lambda x: x['rating'], reverse=True)
+        self.create_buttons()
+        
+    def sort_by_distance(self):
+        global RESTAURANTS
+        RESTAURANTS.sort(key=lambda x: x['distance'])
+        self.create_buttons()
+    def sort_by_taste(self, taste):
+        global RESTAURANTS
+        RESTAURANTS = [r for r in ORIGINAL_RESTAURANTS if r['taste'].lower() == taste.lower()]
+        self.create_buttons()
+
+    def reset_sorting(self):
+        global RESTAURANTS
+        RESTAURANTS = ORIGINAL_RESTAURANTS.copy()
+        self.create_buttons()
+
+    def open_taste_popup(self):
+        content = GridLayout(cols=1, padding=10, spacing=10, size_hint_y=None)
+        
+        # Adjust height dynamically based on number of buttons
+        content.bind(minimum_height=content.setter('height'))
+
+        popup = Popup(title="Select Taste", content=content, size_hint=(None, None), size=(dp(300), dp(250)))
+
+        taste_options = ["Spicy", "Savory", "Sweet"]
+        for taste in taste_options:
+            btn = Button(text=taste, size_hint_y=None, height=dp(50))
+            btn.bind(on_release=lambda btn: (self.sort_by_taste(btn.text), popup.dismiss()))
+            content.add_widget(btn)
+
+        popup.open()
+    def open_sort_popup(self):
+        content = GridLayout(cols=1, padding=10, spacing=10, size_hint_y=None)
+        content.bind(minimum_height=content.setter('height'))
+
+        popup = Popup(title="Sort Options", content=content, size_hint=(None, None), size=(dp(300), dp(350)))
+
+        sort_options = {
+            "Sort by Price": self.sort_by_price,
+            "Sort by Rating": self.sort_by_rating,
+            "Sort by Distance": self.sort_by_distance,
+            "Sort by Taste": self.open_taste_popup,  # Opens another popup
+            "Reset Sorting": self.reset_sorting
+        }
+
+        for text, function in sort_options.items():
+            btn = Button(text=text, size_hint_y=None, height=dp(50))
+            btn.bind(on_release=lambda btn, func=function: (func(), popup.dismiss()))
+            content.add_widget(btn)
+
+        popup.open()
+
+```
+The sorting functions in this implementation use Python's built-in sorting mechanism to reorder the RESTAURANTS list based on different criteria. Each sorting function applies the .sort() method with a lambda function as the key, ensuring an efficient in-place sort without creating unnecessary copies. Sorting by price and distance follows ascending order, while rating is sorted in descending order to prioritize highly-rated restaurants. The sort_by_taste function filters RESTAURANTS based on a specific taste category by comparing lowercase strings, ensuring case insensitivity. The reset_sorting function restores the original dataset by copying ORIGINAL_RESTAURANTS, maintaining a reference for future resets.
+
+The open_sort_popup and open_taste_popup functions create Kivy popups using a GridLayout, dynamically adjusting the height based on the number of options. Each button within the popups is bound to the corresponding sorting function using a lambda function, ensuring the correct method executes upon selection. The use of popup.dismiss() ensures that the popup closes immediately after a choice is made, enhancing user experience. This design encapsulates sorting logic efficiently while maintaining a flexible and interactive UI for users to refine restaurant selections.
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
