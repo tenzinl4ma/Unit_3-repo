@@ -33,7 +33,7 @@ To help overcome these challenges of Mr.M Retro (restaurants), I propose a data-
  *Issued tackle:  “very difficult to navigate and get proper guidance on Mr.M Restro”*
 5. The user can see others reviews and get short insight into dishes before trying.<br>
  *Issued tackle: "The customers also really struggle to get the right preference of their taste on dishes."*
-6. The platform must  show the prices, tastes and cuisine details of each dishes on menu.<br>
+6. The platform must  show the prices, tastes, and cuisine,location details of each dish of Mr.M restaurants.<br>
 *Issue tackle: “ The customers also really struggle to get the right preference of their taste on dishes and a manage budget for it”*
 
 
