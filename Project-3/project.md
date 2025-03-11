@@ -202,19 +202,23 @@ To help overcome these challenges of Mr.M Retro (restaurants), I propose a data-
 
 # Citation
 
-1. https://lablab.ai/t/mastering-ai-content-creation-leveraging-llama-3-and-groq-api
-2. https://www.youtube.com/watch?v=YlRd4rw_vBw&t=40s
-3. https://www.youtube.com/watch?v=A3AXi9WjuQM
-4. https://www.youtube.com/results?search_query=python+simple+hasing
-5. https://www.youtube.com/results?search_query=emailalert+with+python
-6. https://www.youtube.com/watch?v=G-Rp41BzGxg&t=375s
-7. https://www.youtube.com/watch?v=vtpFfnb6pmY
-8. https://kivy.org/doc/stable/api-kivy.uix.screenmanager.html
-9. https://qiita.com/tapitapi/items/a4a4e3a7164afd922115
-10. https://www.youtube.com/watch?v=W5GmuOaUj3w
-11. https://www.youtube.com/results?search_query=sorting+with+python
-12. https://www.youtube.com/results?search_query=query+database
-13. https://www.youtube.com/watch?v=3vsC05rxZ8c
+a) Website Article:
+  Lablab.ai. "Mastering AI Content Creation: Leveraging Llama 3 and Groq API." Lablab, https://lablab.ai/t/mastering-ai-content-creation-leveraging-llama-3-and-groq-api. Accessed 11 Mar. 2025.
 
+b) YouTube Videos:
+
+1. YouTube. "How to Use AI for Content Creation.", YouTube, https://www.youtube.com/watch?v=YlRd4rw_vBw&t=40s.
+2 YouTube. "Llama 3 and Groq API Overview."  YouTube, https://www.youtube.com/watch?v=A3AXi9WjuQM.
+3. YouTube. "Python Simple Hashing."  YouTube, https://www.youtube.com/results?search_query=python+simple+hasing.
+4. YouTube. "Email Alert with Python."  YouTube, https://www.youtube.com/results?search_query=emailalert+with+python.
+5. YouTube. "Python Email Alert Tutorial." YouTube, https://www.youtube.com/watch?v=G-Rp41BzGxg&t=375s.
+6 YouTube. "Understanding ScreenManager in Kivy." , YouTube, https://www.youtube.com/watch?v=vtpFfnb6pmY.
+7. YouTube. "Sorting with Python. https://www.youtube.com/results?search_query=sorting+with+python.
+8. YouTube. "Querying a Database." YouTube, https://www.youtube.com/results?search_query=query+database.
+9. YouTube. "Database Query Basics." YouTube, https://www.youtube.com/watch?v=3vsC05rxZ8c.
+c) Documentation & Blog:
+
+1. "ScreenManager — Kivy API Documentation." Kivy.org, https://kivy.org/doc/stable/api-kivy.uix.screenmanager.html. Accessed 11 Mar. 2025.
+2. Tapitapi. "Kivy UIX ScreenManager Guide." Qiita, https://qiita.com/tapitapi/items/a4a4e3a7164afd922115. Accessed 11 Mar. 2025.
 
 
