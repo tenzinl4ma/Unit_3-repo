@@ -615,53 +615,82 @@ To handle multiple reviews, a BoxLayout with orientation="vertical" is used, ens
         popup.open()
 
 ```
+
 The sorting functions in this implementation use Python's built-in sorting mechanism to reorder the RESTAURANTS list based on different criteria. Each sorting function applies the .sort() method with a lambda function as the key, ensuring an efficient in-place sort without creating unnecessary copies. Sorting by price and distance follows ascending order, while rating is sorted in descending order to prioritize highly-rated restaurants. The sort_by_taste function filters RESTAURANTS based on a specific taste category by comparing lowercase strings, ensuring case insensitivity. The reset_sorting function restores the original dataset by copying ORIGINAL_RESTAURANTS, maintaining a reference for future resets.
 
 The open_sort_popup and open_taste_popup functions create Kivy popups using a GridLayout, dynamically adjusting the height based on the number of options. Each button within the popups is bound to the corresponding sorting function using a lambda function, ensuring the correct method executes upon selection. The use of popup.dismiss() ensures that the popup closes immediately after a choice is made, enhancing user experience. This design encapsulates sorting logic efficiently while maintaining a flexible and interactive UI for users to refine restaurant selections.
 
 
+## Defence system and auto email alert for security.
+
+
+```.py
+
+import smtplib
+from email.mime.text import MIMEText
+
+class EmailAlert:
+    def __init__(self):
+        # SMTP settings
+        self.SMTP_SERVER = "smtp.gmail.com"  # Your email provider's SMTP server
+        self.SMTP_PORT = 587
+        self.SMTP_USER = "user@gmail.com"  # Your email (Gmail in this case)
+        self.SMTP_PASSWORD = "#$#%#&#%#%#%#%"  # Use an App Password (for Gmail)
+        self.ADMIN_EMAIL = "admin@gmail.com"  # The email where alerts are sent
+
+    def send_alert_email(self, message):
+        """Send an alert email to the admin."""
+        try:
+            msg = MIMEText(message)
+            msg["Subject"] = "Security Alert - Suspicious Login Attempts"
+            msg["From"] = self.SMTP_USER
+            msg["To"] = self.ADMIN_EMAIL  # The admin email to send alerts to
+
+            server = smtplib.SMTP(self.SMTP_SERVER, self.SMTP_PORT)
+            server.starttls()
+            server.login(self.SMTP_USER, self.SMTP_PASSWORD)
+            server.sendmail(self.SMTP_USER, self.ADMIN_EMAIL, msg.as_string())
+            server.quit()
+            print("DEBUG: Email sent successfully!")
+        except Exception as e:
+            print(f"ERROR: Email sending failed - {e}")
+
+```
+
+The EmailAlert class establishes an SMTP connection using Gmail’s SMTP server (smtp.gmail.com) on port 587, which supports STARTTLS encryption. Upon initialization, it stores the necessary credentials and recipient email. The send_alert_email method formats the message using MIMEText, setting required headers like "Subject," "From," and "To."
+
+When executed, the method creates an smtplib.SMTP instance, enabling STARTTLS to encrypt the communication before authentication occurs with server.login(). The email is dispatched using server.sendmail(), ensuring the sender and recipient details are correctly processed. Finally, the connection is terminated using server.quit(), preventing resource leaks. Exception handling ensures errors (e.g., authentication failures or connectivity issues) are logged for debugging.
 
 
 
+```.py
+    if user:
+            # Successful login
+            app = MDApp.get_running_app()
+            app.current_user_id = user[0]  # Store the user_id of the logged-in 
+            app.logged_in_user_email = username  # <--- SET THIS ATTRIBUTE
 
+            self.ids.uname.text = ""
+            self.ids.passwd.text = ""
+            ## change here food later right now for trial
+            self.manager.current = "food"
+            self.attempt = 0
+        else:
+            # Failed login1
+            self.attempt += 1
+            print(f"Current attempt: {self.attempt}")
+            self.show_dialog("Invalid Login", "Incorrect username or password.")
 
+            if self.attempt == 2:
+                self.show_dialog("Warning", "You have 3 attempts left. Try to remember.")
+            elif self.attempt >= 5:
+                self.email_alert.send_alert_email(
+                    message=f"Security Alert: User '{username}' has exceeded 5 failed login attempts."
+                )
+```
+This code handles user authentication by verifying login credentials and implementing a security mechanism to track failed attempts. When a user successfully logs in, the script retrieves the current instance of the MDApp, stores the user_id and email, clears the input fields, and navigates to the "food" screen. This ensures session data is available throughout the application.
 
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+If authentication fails, the attempt counter increments, and warnings are displayed based on predefined thresholds. At two failed attempts, a cautionary message appears, and after five unsuccessful attempts, the system triggers an email alert using the email_alert.send_alert_email method which is shown above the class code. This prevents brute-force attacks by notifying administrators of suspicious activity.
 
 
 
