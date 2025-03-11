@@ -222,3 +222,268 @@ c) Documentation & Blog:
 2. Tapitapi. "Kivy UIX ScreenManager Guide." Qiita, https://qiita.com/tapitapi/items/a4a4e3a7164afd922115. Accessed 11 Mar. 2025.
 
 
+
+
+## Main file: "project_3.py"
+
+## Importing methods that I need in building the application
+
+```.py
+
+from mylib import DatabaseManager, get_hash, check_hash
+
+```
+I imported two methods and a class: get_hash, check_hash, and DatabaseBase from a local file called "Mylib". The DatabaseManager class helps me connect to the relational database that stores all the data in this project. It allows me to interact with the database through python by running the SQL queries. The two main methods inside the DatabaseManager class are run_query and search. Run query allows me to run a SQL query through python, while the search method can return the result of the query ran. 
+
+```.py
+class DatabaseManager:
+    def __init__(self, name: str):
+        self.connection = sqlite3.connect(name)
+        self.cursor = self.connection.cursor()
+
+    def search(self, query: str, params: tuple = ()):
+        result = self.cursor.execute(query, params).fetchall()
+        return result
+
+    def save(self, query: str):
+        self.cursor.execute(query)
+        self.connection.commit()
+
+    def execute(self, insert_query: str, param: tuple):
+        self.cursor.execute(insert_query, param)
+        self.connection.commit()
+
+    def close(self):
+        self.connection.close()
+
+```
+Above class "DatabaseManager, is a simple way to interact with an SQLite database. First method is constructor which runs when you create an object from the class. It connects to an SQLite dtabase with given by the name. It creates a cursor, which allows us to run SQL commands. The second method called search is for retriving data from database. It fetches the data and run the given SQL "query" with optional params(e.g, filtering results). atlast this method will return the result as a list of tuples. The save method runs an SQL command that does not need parameters, it commit changes to make them permanent. Excute methods run SQL command that help us to insert or update specific rows with the values. And finally the close function will close the database when we are done to avoid data overflow.
+
+
+```.py
+from passlib.hash import pbkdf2_sha256 as hash_function
+
+def get_hash(text: str):
+    return hash_function.hash(text)
+
+
+def check_hash(input_hash, text):
+    return hash_function.verify(text, input_hash)
+
+```
+
+Two other methods I imported are get_hash and check_hash. The get_hash method takes a string as the input, and returns another string encrypted by the sha-256 encryption from the passlib library. This method allows me to encrypt user data so that they are safe from unauthorized agent and possible information leaks.
+
+The check_hash function takes the plain text, hashes it and verify if it matchs with previously stored hash. This method helps me with the login system and validation system. 
+
+## Review and Rating Code(Success Criteria 1)
+
+As stated in success criteria, my client required a reviews and ratings system, so users and food critics can rewiews and rate on each dishes.
+```.py
+
+def open_review_dialog(self, food_name, instance, touch):
+    # Check if the touch is within the bounds of the image
+        if instance.collide_point(*touch.pos):
+            # Create TextInput for review input
+            self.review_input = TextInput(
+                hint_text=f"Write a review for {food_name}",  # Placeholder text
+                size_hint_y=None,
+                height="40dp",  # Ensure it has enough height
+                multiline=False  # Single-line input
+            )
+
+            # Star rating variables
+            self.rating = 0  # Default rating is 0
+            self.star_buttons = []  # List to store star buttons
+
+            # Here we are Creating a BoxLayout for star ratings
+            star_layout = BoxLayout(orientation="horizontal", spacing="5dp", size_hint_y=None, height="40dp")
+            for i in range(1, 6):  # Create 5 stars
+                star_button = MDIconButton(
+                    icon="star-outline",  # Default star icon
+                    theme_icon_color="Custom",
+                    icon_color=(1, 1, 0, 1),  # Yellow color for stars
+                    on_release=lambda x, index=i: self.update_rating(index)
+                )
+                self.star_buttons.append(star_button)
+                star_layout.add_widget(star_button)
+
+            # This BoxLayout is use to hold the label, stars, and TextInput
+            content_box = BoxLayout(orientation="vertical", spacing="10dp", size_hint_y=None, height="160dp")
+            content_box.add_widget(MDLabel(text=f"Rate and Review {food_name}:", theme_text_color="Custom", text_color=(1, 1, 1, 1)))
+            content_box.add_widget(star_layout)  # Add star rating layout
+            content_box.add_widget(self.review_input)
+
+            # Create and show the dialog with "Cancel" and "Submit" buttons
+            self.review_dialog = MDDialog(
+                title="Rate and Review",
+                type="custom",
+                content_cls=content_box,  # Use the BoxLayout as content_cls
+                md_bg_color=[0, 0, 0, 1],)  # Black background
+
+```
+The open_review_dialog method is responsible for initializing and displaying a modal dialog that allows users to rate and review a specific food item. It first verifies whether the touch event occurred within the bounds of the image instance using collide_point(*touch.pos). If the condition is met, it dynamically creates a TextInput widget with a predefined height and single-line constraint to capture the user’s review input.
+
+Additionally, the method initializes a star rating system by generating five MDIconButton instances with an outlined star icon and a yellow color scheme. Each button is assigned a lambda function that invokes update_rating(index), dynamically updating the rating based on user interaction. The buttons are stored in a list (self.star_buttons) for later manipulation.
+
+A BoxLayout is then constructed to house the star buttons in a horizontal arrangement, while another vertical BoxLayout (content_box) encapsulates the rating label, the star rating layout, and the review input field. This structured layout is then assigned as the content_cls of an MDDialog, which is instantiated with a custom dark background theme. The dialog features predefined "Cancel" and "Submit" actions, allowing users to either discard or submit their review.
+
+
+
+### Submiting the Reviews and Rating to Database
+
+
+```.py
+cursor.execute("""
+                INSERT OR REPLACE INTO aggregate_ratings (
+                    food_name, total_ratings, average_rating,
+                    star_5_percent, star_4_percent, star_3_percent, star_2_percent, star_1_percent
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """, (
+                food_name,
+                total_ratings,
+                average_rating,
+                star_percentages[5],
+                star_percentages[4],
+                star_percentages[3],
+                star_percentages[2],
+                star_percentages[1]
+            ))
+
+```
+After user input reviews and stared it the execute method from the DatabaseManager class is 
+used to insert reviews and ratings into the database. It runs a parameterized query and commits the changes automatically, ensuring data is securely inserted into the reviews table. By using placeholders (?), it prevents SQL injection and binds input values to the query, making it the ideal method for inserting data.
+
+# Featuring Dishes with Sorting algorithm with rating(Sucess Criteria 2)
+
+```.py
+
+def sort_food_by_rating(self):
+    cursor = DatabaseManager.connection.cursor() 
+    # Fetch average ratings for all food items
+    ratings_data = DatabaseManager.search("""
+    SELECT food_name, average_rating
+    FROM aggregate_ratings
+""")
+    ratings_data = cursor.fetchall()
+
+    # Create a dictionary to map food names to their average ratings
+    ratings_dict = {food_name: avg_rating for food_name, avg_rating in ratings_data}
+
+    # Sort food_images by average rating (descending order)
+    elf.food_images.sort(
+    key=lambda food: ratings_dict.get(food["name"], 0),  # Default rating is 0 if not found
+            reverse=True
+        )
+
+    # Reload the menu to reflect the sorted order
+    self.load_menu()
+
+
+        ```
+To integrate the DatabaseManager into the existing code for fetching ratings data, the direct use of DB_CONNECTION can be replaced with the DatabaseManager's methods. Instead of manually calling DB_CONNECTION.cursor(), the connection attribute from the DatabaseManager instance (DatabaseManager.connection.cursor()) can be used. This allows the cursor functionality to be maintained within the context of the DatabaseManager class.
+
+Next, instead of using cursor.execute() and cursor.fetchall(), the search() method from DatabaseManager can be used. The search() method is designed to execute a query and return the results directly, so it replaces the cursor.execute() and cursor.fetchall() pattern. This simplifies the code and leverages the functionality of DatabaseManager for both executing queries and retrieving data.
+
+```.py
+
+def plot_graph(self):
+        food_names, ratings = self.get_food_ratings()
+        
+        # Create the bar plot
+        plt.bar(food_names, ratings, color='skyblue')
+        plt.xlabel('Food Items')
+        plt.ylabel('Rating')
+        plt.title('Food Ratings Distribution')
+        
+
+        plt.ylim(0, 6)  # Extend y-axis to 6 to avoid touching the ceiling
+        
+        # Set y-axis ticks to include 1 through 6 as our graph is ugly when touched up
+        plt.yticks([1, 2, 3, 4, 5, 6])
+        
+        # Rotate x-axis labels to prevent overlap
+        plt.xticks(rotation=45, ha="right")  # Rotate by 45 degrees and align to the right
+
+        # Display in Kivy UI
+        self.add_widget(FCK(plt.gcf()))  # gcf = Get Current Figure
+```
+The plot_graph method works by first retrieving the food ratings and their corresponding names through the get_food_ratings method. This data is then used to generate a bar plot using Matplotlib’s plt.bar, where food names are plotted on the x-axis and their ratings are represented on the y-axis. The method customizes the plot by setting the y-axis range slightly above the maximum rating value, ensuring the bars do not touch the top of the plot. The y-ticks are specifically defined to show values from 1 to 6 to match the expected rating scale. To improve the readability of the x-axis, the labels are rotated 45 degrees and aligned to the right to avoid overlap. Finally, the current Matplotlib figure (plt.gcf()) is added as a Kivy widget, integrating the generated plot directly into the Kivy UI via the FCK widget, allowing dynamic visualization of the ratings in the app.
+
+```.py
+
+def save_graph(self, instance):
+        # Get name from the textinput
+        filename = self.filename_input.text.strip()
+        # validate for name
+        if not filename:
+            filename = "Food_Ratings"  # Default filename if nothing is entered
+        # Ensure the target directory exists
+        target_directory = os.path.join(os.path.expanduser("DragonWarrior/Desktop/Unit3_Repo/Project-3/image"), "Downloads")
+        if not os.path.exists(target_directory):
+            os.makedirs(target_directory)  # Create the directory if it doesn't exist
+        # Save the plot directly to the fixed location with the custom filename
+        plt.savefig(fixed_path)  
+        # Show a "Downloaded" message
+        self.show_download_message(fixed_path)
+        # Close the popup after saving
+        self.popup.dismiss()
+    def show_download_message(self, filepath):
+        """ Display a message saying the file was downloaded. """
+        message = f"Downloaded: {os.path.basename(filepath)}"
+        
+        # Create a new popup with an OK button and a label
+        download_popup_content = BoxLayout(orientation='vertical', spacing=10)
+        download_popup_content.add_widget(Label(text=message))  # Display download message
+        ok_button = Button(text='OK', size_hint=(None, None), size=(100, 40))  # OK button
+```
+After we the graph plotted we can download it with save_graph method which works by first retrieving the filename entered by the user through a TextInput widget, defaulting to "Food_Ratings" if no input is provided. It then ensures the target directory exists (in this case, a Downloads folder on the desktop) and creates it if necessary. The path for saving the plot is constructed using the user's filename and the fixed directory path. The Matplotlib plot is then saved as a PNG file at this location using plt.savefig. After saving the plot, a confirmation message is displayed using a popup that shows the name of the downloaded file. Finally, the dismiss_popup method allows the user to cancel and close the popup if needed, while the show_download_message method displays the successful download message in a new popup. This approach allows the user to dynamically save and confirm the saved plot image on their desktop.
+
+fig.1: shows graph downloading
+
+
+
+### Communicating with groq Api for chatbot(sucess criteria 3)
+
+
+```.py
+from groq import Groq
+from dotenv import load_dotenv
+
+groq_api_key = os.getenv("GROQ_API_KEY")
+
+client = Groq(api_key=groq_api_key)
+class ChatbotScreen(Screen):
+    def on_enter(self):
+        greeting_message = "Hi there! I am the DragonWarrior. I can also give recipe of anything!"
+        self.add_message(f"DragonWarrior: {greeting_message}", "left")
+
+    def send_message(self):
+        user_input = self.ids.user_input.text.strip()
+
+        if not user_input:
+            return  # Ignore empty messages
+
+        # Prepend "You:" to the user's message
+        self.add_message(f"You: {user_input}", "right")
+
+        # Clear input field
+        self.ids.user_input.text = ""
+
+        # Process message with Groq AI (non-blocking)
+        Clock.schedule_once(lambda dt: self.get_bot_response(user_input), 0)
+
+    def get_bot_response(self, user_query):
+        """Fetch response from Groq AI and display it."""
+        message- [{"role":"system", "content": Assistant},{"role": "user", "content": user_query}]
+        response = client.chat.completions.create(
+                model="qwen-2.5-32b",  ## better than deepseek and ollama
+                messages=messages
+            )
+
+        ## "............continue--- for the kivy and other widget"
+
+```
+
+First it will get the api from the .env file for security because when I push it in github the api key is leaked. So, to prevent that we use inbuild library called dotenv which will graph and hide api key. res the code integrates the Groq AI with a Kivy-based chatbot interface by initializing the Groq client with an API key retrieved from an environment variable. When the ChatbotScreen is displayed, a greeting message is added to the chat interface. The user’s message is formatted with a "You:" prefix and sent to the interface, after which the input field is cleared. To ensure the UI remains responsive, the message query is processed asynchronously using Clock.schedule_once, which schedules the AI query to run in the next event loop iteration. The get_bot_response method constructs a message payload with the user input and a system message, which is then sent to Groq's chat.completions.create() method for a response. This non-blocking approach prevents UI freezing, enabling a smooth user experience while awaiting the AI's response.
+
