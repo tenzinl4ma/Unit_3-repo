@@ -697,6 +697,8 @@ If authentication fails, the attempt counter increments, and warnings are displa
 # Criteria D: Functionality
 
 ## Video showcasing the functionality of the application
+The Video Link: https://drive.google.com/drive/folders/1rQ3ygaipTw_ariMtAi3uILMWP9LPqvKm
+
 
 
 
