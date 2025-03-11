@@ -190,40 +190,6 @@ To help overcome these challenges of Mr.M Retro (restaurants), I propose a data-
 8. security EmailAlert
 
 
-
-
-
-# Criteria D: Functionality
-
-## Video showcasing the functionality of the application
-
-
-
-
-# Citation
-
-a) Website Article:
-  Lablab.ai. "Mastering AI Content Creation: Leveraging Llama 3 and Groq API." Lablab, https://lablab.ai/t/mastering-ai-content-creation-leveraging-llama-3-and-groq-api. Accessed 11 Mar. 2025.
-
-b) YouTube Videos:
-
-1. YouTube. "How to Use AI for Content Creation.", YouTube, https://www.youtube.com/watch?v=YlRd4rw_vBw&t=40s.
-2 YouTube. "Llama 3 and Groq API Overview."  YouTube, https://www.youtube.com/watch?v=A3AXi9WjuQM.
-3. YouTube. "Python Simple Hashing."  YouTube, https://www.youtube.com/results?search_query=python+simple+hasing.
-4. YouTube. "Email Alert with Python."  YouTube, https://www.youtube.com/results?search_query=emailalert+with+python.
-5. YouTube. "Python Email Alert Tutorial." YouTube, https://www.youtube.com/watch?v=G-Rp41BzGxg&t=375s.
-6 YouTube. "Understanding ScreenManager in Kivy." , YouTube, https://www.youtube.com/watch?v=vtpFfnb6pmY.
-7. YouTube. "Sorting with Python. https://www.youtube.com/results?search_query=sorting+with+python.
-8. YouTube. "Querying a Database." YouTube, https://www.youtube.com/results?search_query=query+database.
-9. YouTube. "Database Query Basics." YouTube, https://www.youtube.com/watch?v=3vsC05rxZ8c.
-c) Documentation & Blog:
-
-1. "ScreenManager — Kivy API Documentation." Kivy.org, https://kivy.org/doc/stable/api-kivy.uix.screenmanager.html. Accessed 11 Mar. 2025.
-2. Tapitapi. "Kivy UIX ScreenManager Guide." Qiita, https://qiita.com/tapitapi/items/a4a4e3a7164afd922115. Accessed 11 Mar. 2025.
-
-
-
-
 ## Main file: "project_3.py"
 
 ## Importing methods that I need in building the application
@@ -486,4 +452,56 @@ class ChatbotScreen(Screen):
 ```
 
 First it will get the api from the .env file for security because when I push it in github the api key is leaked. So, to prevent that we use inbuild library called dotenv which will graph and hide api key. res the code integrates the Groq AI with a Kivy-based chatbot interface by initializing the Groq client with an API key retrieved from an environment variable. When the ChatbotScreen is displayed, a greeting message is added to the chat interface. The user’s message is formatted with a "You:" prefix and sent to the interface, after which the input field is cleared. To ensure the UI remains responsive, the message query is processed asynchronously using Clock.schedule_once, which schedules the AI query to run in the next event loop iteration. The get_bot_response method constructs a message payload with the user input and a system message, which is then sent to Groq's chat.completions.create() method for a response. This non-blocking approach prevents UI freezing, enabling a smooth user experience while awaiting the AI's response.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Criteria D: Functionality
+
+## Video showcasing the functionality of the application
+
+
+
+
+# Citation
+
+a) Website Article:
+  Lablab.ai. "Mastering AI Content Creation: Leveraging Llama 3 and Groq API." Lablab, https://lablab.ai/t/mastering-ai-content-creation-leveraging-llama-3-and-groq-api. Accessed 11 Mar. 2025.
+
+b) YouTube Videos:
+
+1. YouTube. "How to Use AI for Content Creation.", YouTube, https://www.youtube.com/watch?v=YlRd4rw_vBw&t=40s.
+2 YouTube. "Llama 3 and Groq API Overview."  YouTube, https://www.youtube.com/watch?v=A3AXi9WjuQM.
+3. YouTube. "Python Simple Hashing."  YouTube, https://www.youtube.com/results?search_query=python+simple+hasing.
+4. YouTube. "Email Alert with Python."  YouTube, https://www.youtube.com/results?search_query=emailalert+with+python.
+5. YouTube. "Python Email Alert Tutorial." YouTube, https://www.youtube.com/watch?v=G-Rp41BzGxg&t=375s.
+6 YouTube. "Understanding ScreenManager in Kivy." , YouTube, https://www.youtube.com/watch?v=vtpFfnb6pmY.
+7. YouTube. "Sorting with Python. https://www.youtube.com/results?search_query=sorting+with+python.
+8. YouTube. "Querying a Database." YouTube, https://www.youtube.com/results?search_query=query+database.
+9. YouTube. "Database Query Basics." YouTube, https://www.youtube.com/watch?v=3vsC05rxZ8c.
+c) Documentation & Blog:
+
+1. "ScreenManager — Kivy API Documentation." Kivy.org, https://kivy.org/doc/stable/api-kivy.uix.screenmanager.html. Accessed 11 Mar. 2025.
+2. Tapitapi. "Kivy UIX ScreenManager Guide." Qiita, https://qiita.com/tapitapi/items/a4a4e3a7164afd922115. Accessed 11 Mar. 2025.
+
+
 
